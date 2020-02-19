@@ -14,7 +14,7 @@ class Node():
 
 
 def astar(maze, start, end):
-    
+    """Returns a list of tuples as a path from the given start to the given end in the given maze"""
 
     # Create start and end node
     start_node = Node(None, start)
@@ -22,10 +22,9 @@ def astar(maze, start, end):
     end_node = Node(None, end)
     end_node.g = end_node.h = end_node.f = 0
 
-    # Initialize both the open and closed list arrays
-      # ENTER your open_list code here 
-	  # ENTER your closed_list code here
-    
+    # Initialize both open and closed list
+    open_list = []
+    closed_list = []
 
     # Add the start node
     open_list.append(start_node)
@@ -52,11 +51,11 @@ def astar(maze, start, end):
             while current is not None:
                 path.append(current.position)
                 current = current.parent
-            return path[::-1] 
+            return path[::-1] # Return reversed path
 
         # Generate children
         children = []
-        for new_position in [# ENTER YOUR NODE NEIGHBOUR FINDING CODE HERE  ]: 
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
 
             # Get node position
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
@@ -98,11 +97,20 @@ def astar(maze, start, end):
 
 
 def main():
-          
-    maze = [[# ENTER your maze data here],] 
 
-    start = (# ENTER your start cell location Y, your start cell location X)  
-    end = (# ENTER your end goal cell location Y, your end goal cell location X)     
+    maze = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    start = (0, 0)
+    end = (7, 6)
 
     path = astar(maze, start, end)
     print(path)
