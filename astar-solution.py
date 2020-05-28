@@ -12,7 +12,6 @@ class Node():
     def __eq__(self, other):
         return self.position == other.position
 
-
 def astar(maze, start, end):
     # Create start and end node
     start_node = Node(None, start)
@@ -110,7 +109,6 @@ def astar(maze, start, end):
             # Add the child to the open list
             open_list.append(child)
 
-
 def main():
 
     maze = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -152,7 +150,6 @@ def main():
 
     # Run the program
     astar(maze, start, end)
-
 
 if __name__ == '__main__':
     main()
